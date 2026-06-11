@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, View, Button, TextInput } from 'react-native'
+import { Alert, StyleSheet, Text, View, Pressable, TextInput } from 'react-native'
 import React,{ useState } from 'react'
 
 import { ScreenType } from '../constants/constants';
@@ -48,43 +48,40 @@ class AddNote extends React.Component {
               onChangeText={textValue => this.handleChange(textValue)}
               style={styles.input}  />
           </View>
-          <Button onPress={this.handleClick} title="Add" />
+          <Pressable 
+            style={({ pressed }) => [
+              styles.addButton,
+              pressed && styles.buttonPressed
+            ]} 
+            onPress={this.handleClick}
+          >
+            <Text style={styles.addButtonText}>Add</Text>
+          </Pressable>
         </View>
       </View>
     )
   }
 }
 
-const AddNote2 = ({onSave, onExit}) => {
-  const [text, onChangeText] = useState('');
-  const handleChange = (val) => {
-    onChangeText(val);
-  }
-  const handleClick = () => {
-    //if(enteredText.trim().length > 0){
-      onSave(text);
-      onExit(ScreenType.allNotes);
-    //}
-  }
-  return (
-    <View style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>Add Note</Text>
-        <View>
-          <TextInput 
-            value={text}
-            onChangeText={handleChange} 
-            style={styles.input}  />
-        </View>
-        <Button onPress={handleClick} title="Add" />
-      </View>
-    </View>
-  )
-}
-
 export default AddNote
 
 const styles = StyleSheet.create({
+  addButton: {
+    backgroundColor: '#2E80EB', // Azul consistente con el resto de la app
+    height: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  addButtonText: {
+    color: '#000000', // Texto en color negro
+    fontSize: 22,
+    fontWeight: '400',
+  },
+  buttonPressed: {
+    opacity: 0.8,
+  },
   input: {
     marginVertical: 20,
     width: '100%',
