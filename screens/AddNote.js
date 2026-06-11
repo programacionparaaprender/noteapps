@@ -46,7 +46,7 @@ class AddNote extends React.Component {
                 }
               }}
               onChangeText={textValue => this.handleChange(textValue)}
-              styles={styles.input}  />
+              style={styles.input}  />
           </View>
           <Button onPress={this.handleClick} title="Add" />
         </View>
@@ -74,7 +74,7 @@ const AddNote2 = ({onSave, onExit}) => {
           <TextInput 
             value={text}
             onChangeText={handleChange} 
-            styles={styles.input}  />
+            style={styles.input}  />
         </View>
         <Button onPress={handleClick} title="Add" />
       </View>
@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
   input: {
     marginVertical: 20,
     width: '100%',
-    borderBottonWidth: 2,
+    borderBottomWidth: 2,
     fontSize: 16,
-    padding: 10,
+    padding: 10
   },
   title: {
     fontSize: 20,
